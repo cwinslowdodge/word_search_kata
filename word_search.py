@@ -13,3 +13,12 @@ class BuildPuzzle:
             list_of_lines.append(line.split(','))
 
         return list_of_lines
+
+    def create_words_list(self, filename):
+        word_list = []
+        list_of_lines = BuildPuzzle().populate_puzzle_lines(filename)
+
+        for word in list_of_lines[0]:
+            word_list.append(word)
+
+        return word_list
