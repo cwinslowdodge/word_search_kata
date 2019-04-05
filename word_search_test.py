@@ -29,6 +29,10 @@ class TestWordSearch(unittest.TestCase):
         file = word_search.BuildPuzzle().create_puzzle_board_matrix('puzzle1.txt')
         self.assertEqual(len(file), len(file[0]))
 
+    def test_puzzle_board_is_correct_length(self):
+        file = word_search.BuildPuzzle().create_puzzle_board_matrix('puzzle0.txt')
+        self.assertEqual(len(file[0]), 15)
+
 
 
 if __name__ == '__main__':
