@@ -22,3 +22,14 @@ class BuildPuzzle:
             word_list.append(word)
 
         return word_list
+
+    def create_puzzle_board_matrix(self, filename):
+        puzzle_board = []
+        list_of_lines = BuildPuzzle().populate_puzzle_lines(filename)
+
+        for line in list_of_lines:
+            puzzle_board.append(line)
+
+        puzzle_board.pop(0)
+
+        return puzzle_board
