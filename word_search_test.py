@@ -11,6 +11,11 @@ class TestWordSearch(unittest.TestCase):
         file = word_search.BuildPuzzle().create_words_list('puzzle0.txt')
         self.assertEqual(len(file), 7)
 
+    def test_first_word_in_word_list(self):
+        file = word_search.BuildPuzzle().create_words_list('puzzle0.txt')
+        self.assertEqual(file[0], 'BONES')
+        
+
 
 if __name__ == '__main__':
     unittest.main()
