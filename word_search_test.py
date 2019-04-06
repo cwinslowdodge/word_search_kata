@@ -33,6 +33,10 @@ class TestWordSearch(unittest.TestCase):
         file = word_search.BuildPuzzle().create_puzzle_board_matrix('puzzle0.txt')
         self.assertEqual(len(file[0]), 15)
 
+    def test_find_first_letter_of_first_word_on_puzzle_board(self):
+        file = word_search.WordFinder().search_for_first_letter('puzzle0.txt')
+        self.assertEqual(file[0], 'B')
+
 
 
 if __name__ == '__main__':

@@ -33,3 +33,32 @@ class BuildPuzzle:
         puzzle_board.pop(0)
 
         return puzzle_board
+
+class WordFinder:
+
+
+
+    def search_for_first_letter(self, filename):
+
+        words = BuildPuzzle().create_words_list(filename)
+        puzzle = BuildPuzzle().create_puzzle_board_matrix(filename)
+
+        for word in words:
+            for line in puzzle:
+                for letter in line:
+                    if letter == word[0]:
+                        print puzzle.index(line)
+                        print line.index(letter)
+
+                        return word[0]
+
+
+
+
+
+
+
+
+
+
+
