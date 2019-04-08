@@ -61,5 +61,11 @@ class TestWordSearch(unittest.TestCase):
         file = word_search.WordFinder().search_for_first_letter_index('puzzle0.txt')
         self.assertEqual(file[5], [[3,3],[2,2],[1,1],[0,0]])
 
+    def test_word_coordinates_found_descending_diagonally_down(self):
+        file = word_search.WordFinder().search_for_first_letter_index('puzzle0.txt')
+        self.assertEqual(file[6], [[4, 0], [3, 1], [2, 2], [1, 3], [0, 4]])
+
+
+
 if __name__ == '__main__':
     unittest.main()

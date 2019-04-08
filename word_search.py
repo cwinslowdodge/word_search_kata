@@ -83,12 +83,17 @@ class WordFinder:
                             print word + ':', found_diag_dsc_up
                             pass
 
+                        if WordFinder().search_for_word_descending_diagonally_down(index, word, puzzle) is not None:
+                            found_diag_dsc_down = WordFinder().search_for_word_descending_diagonally_down(index, word, puzzle)
+                            print word + ':', found_diag_dsc_down
+                            pass
+
                         index = []
 
                     l_index = l_index + 1
 
 
-        return found_vert_des, found_vert_asc, found_hrz_asc, found_hrz_des, found_diag_asc_down, found_diag_dsc_up
+        return found_vert_des, found_vert_asc, found_hrz_asc, found_hrz_des, found_diag_asc_down, found_diag_dsc_up, found_diag_dsc_down
 
     def search_for_word_descending_vertically(self, index, word, puzzle):
 
@@ -238,7 +243,34 @@ class WordFinder:
         if len(word_coordinates) == len(word):
             return word_coordinates
 
-#WordFinder().search_for_first_letter_index('puzzle0.txt')
+    def search_for_word_descending_diagonally_down(self, index, word, puzzle):
+
+        word_coordinates = [index]
+        letter_coordinates = []
+        index_x = index[0] - 1
+        index_y = index[1] + 1
+        i = 1
+
+        while i < len(word) and index_x >= 0 and index_y < len(puzzle):
+
+            if word[i] == puzzle[index_y][index_x]:
+
+                letter_coordinates.append(index_x)
+                letter_coordinates.append(index_y)
+                word_coordinates.append(letter_coordinates)
+                index_x = index_x - 1
+                index_y = index_y + 1
+                i = i + 1
+                letter_coordinates = []
+
+            else:
+                break
+
+        if len(word_coordinates) == len(word):
+            return word_coordinates
+
+
+WordFinder().search_for_first_letter_index('puzzle0.txt')
 
 
 
