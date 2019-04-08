@@ -1,2 +1,3 @@
 puzzle0.txt
+puzzle1.txt
 word_search.pyc
