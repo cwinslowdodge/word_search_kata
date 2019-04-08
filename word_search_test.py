@@ -35,23 +35,23 @@ class TestWordSearch(unittest.TestCase):
 
     def test_find_index_of_first_letter_of_last_word_on_puzzle_board(self):
         file = word_search.WordFinder().search_for_first_letter_index('puzzle0.txt')
-        self.assertEqual(file[0], [13,5])
+        self.assertEqual(file[0][0], [0,6])
 
     def test_word_coordinates_found_descending_vertically(self):
         file = word_search.WordFinder().search_for_first_letter_index('puzzle0.txt')
-        self.assertEqual(file[1], [[6, 0], [7, 0], [8, 0], [9, 0], [10, 0]])
+        self.assertEqual(file[0], [[0,6], [0,7], [0,8], [0,9], [0,10]])
 
     def test_word_coordinates_found_ascending_vertically(self):
         file = word_search.WordFinder().search_for_first_letter_index('puzzle0.txt')
-        self.assertEqual(file[2], [[9, 5], [8, 5], [7, 5], [6, 5]])
+        self.assertEqual(file[1], [[5,9], [5,8], [5,7], [5,6]])
 
     def test_word_coordinates_found_ascending_horizontally(self):
         file = word_search.WordFinder().search_for_first_letter_index('puzzle0.txt')
-        self.assertEqual(file[3], [[5, 0], [5, 1], [5, 2], [5, 3], [5, 4], [5, 5]])
+        self.assertEqual(file[2], [[0,5], [1,5], [2,5], [3,5], [4,5], [5,5]])
 
     def test_word_coordinates_found_descending_horizontally(self):
         file = word_search.WordFinder().search_for_first_letter_index('puzzle0.txt')
-        self.assertEqual(file[4], [[0, 8], [0, 7], [0, 6], [0, 5]])
+        self.assertEqual(file[3], [[4, 7],[3, 7],[2, 7],[1, 7]])
 
 if __name__ == '__main__':
     unittest.main()
