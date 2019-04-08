@@ -54,11 +54,15 @@ class WordFinder:
 
                         if WordFinder().search_for_word_descending_vertically(index, word, puzzle) is not None:
                             found_vert_des = WordFinder().search_for_word_descending_vertically(index, word, puzzle)
+                            print word + ':', found_vert_des
 
+                        if WordFinder().search_for_word_ascending_vertically(index, word, puzzle) is not None:
+                            found_vert_asc = WordFinder().search_for_word_ascending_vertically(index, word, puzzle)
+                            print word + ':', found_vert_asc
                         index = []
 
 
-        return first_index, found_vert_des
+        return first_index, found_vert_des, found_vert_asc
 
     def search_for_word_descending_vertically(self, index, word, puzzle):
 
@@ -81,12 +85,35 @@ class WordFinder:
                 break
 
         if len(word_coordinates) == len(word):
-            #print word, word_coordinates
+            #print word + ':', word_coordinates
+            return word_coordinates
+
+    def search_for_word_ascending_vertically(self, index, word, puzzle):
+
+        word_coordinates = [index]
+        letter_coordinates = []
+        counter = index[0] - 1
+        i = 1
+
+        while i < len(word) and counter >= 0:
+
+            if word[i] == puzzle[counter][index[1]]:
+                letter_coordinates.append(counter)
+                letter_coordinates.append(index[1])
+                word_coordinates.append(letter_coordinates)
+                counter = counter - 1
+                i = i + 1
+                letter_coordinates = []
+
+            else:
+                break
+
+        if len(word_coordinates) == len(word):
+            #print word + ':', word_coordinates
             return word_coordinates
 
 
-
-
+#WordFinder().search_for_first_letter_index('puzzle0.txt')
 
 
 
