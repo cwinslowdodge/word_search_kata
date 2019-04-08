@@ -44,37 +44,51 @@ class WordFinder:
 
         for word in words:
             for line in puzzle:
-                l_count = 0
+                l_index = 0
                 for letter in line:
 
                     if letter == word[0]:
 
-                        index.append(l_count)
+                        index.append(l_index)
                         index.append(puzzle.index(line))
 
 
                         if WordFinder().search_for_word_descending_vertically(index, word, puzzle) is not None:
                             found_vert_des = WordFinder().search_for_word_descending_vertically(index, word, puzzle)
                             print word + ':', found_vert_des
+                            pass
 
                         if WordFinder().search_for_word_ascending_vertically(index, word, puzzle) is not None:
                             found_vert_asc = WordFinder().search_for_word_ascending_vertically(index, word, puzzle)
                             print word + ':', found_vert_asc
+                            pass
 
                         if WordFinder().search_for_word_ascending_horizontally(index, word, puzzle) is not None:
                             found_hrz_asc = WordFinder().search_for_word_ascending_horizontally(index, word, puzzle)
                             print word + ':', found_hrz_asc
+                            pass
 
                         if WordFinder().search_for_word_descending_horizontally(index, word, puzzle) is not None:
                             found_hrz_des = WordFinder().search_for_word_descending_horizontally(index, word, puzzle)
                             print word + ':', found_hrz_des
+                            pass
+
+                        if WordFinder().search_for_word_ascending_diagonally_down(index, word, puzzle) is not None:
+                            found_diag_asc_down = WordFinder().search_for_word_ascending_diagonally_down(index, word, puzzle)
+                            print word + ':', found_diag_asc_down
+                            pass
+
+                        if WordFinder().search_for_word_descending_diagonally_up(index, word, puzzle) is not None:
+                            found_diag_dsc_up = WordFinder().search_for_word_descending_diagonally_up(index, word, puzzle)
+                            print word + ':', found_diag_dsc_up
+                            pass
 
                         index = []
 
-                    l_count = l_count + 1
+                    l_index = l_index + 1
 
 
-        return found_vert_des, found_vert_asc, found_hrz_asc, found_hrz_des
+        return found_vert_des, found_vert_asc, found_hrz_asc, found_hrz_des, found_diag_asc_down, found_diag_dsc_up
 
     def search_for_word_descending_vertically(self, index, word, puzzle):
 
@@ -163,6 +177,58 @@ class WordFinder:
                 letter_coordinates.append(index[1])
                 word_coordinates.append(letter_coordinates)
                 counter = counter - 1
+                i = i + 1
+                letter_coordinates = []
+
+            else:
+                break
+
+        if len(word_coordinates) == len(word):
+            return word_coordinates
+
+    def search_for_word_ascending_diagonally_down(self, index, word, puzzle):
+
+        word_coordinates = [index]
+        letter_coordinates = []
+        index_x = index[0] + 1
+        index_y = index[1] + 1
+        i = 1
+
+        while i < len(word) and index_x < len(puzzle) and index_y < len(puzzle):
+
+            if word[i] == puzzle[index_y][index_x]:
+
+                letter_coordinates.append(index_x)
+                letter_coordinates.append(index_y)
+                word_coordinates.append(letter_coordinates)
+                index_x = index_x + 1
+                index_y = index_y + 1
+                i = i + 1
+                letter_coordinates = []
+
+            else:
+                break
+
+        if len(word_coordinates) == len(word):
+            return word_coordinates
+
+    def search_for_word_descending_diagonally_up(self, index, word, puzzle):
+
+        word_coordinates = [index]
+        letter_coordinates = []
+        index_x = index[0] - 1
+        index_y = index[1] - 1
+        i = 1
+
+        while i < len(word) and index_x >= 0 and index_y >= 0:
+
+            if word[i] == puzzle[index_y][index_x]:
+
+                letter_coordinates.append(index_x)
+                letter_coordinates.append(index_y)
+                word_coordinates.append(letter_coordinates)
+                index_x = index_x - 1
+                index_y = index_y - 1
                 i = i + 1
                 letter_coordinates = []
 
