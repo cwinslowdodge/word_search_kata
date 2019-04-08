@@ -36,24 +36,53 @@ class BuildPuzzle:
 
 class WordFinder:
 
-
-
-    def search_for_first_letter(self, filename):
+    def search_for_first_letter_index(self, filename):
 
         words = BuildPuzzle().create_words_list(filename)
         puzzle = BuildPuzzle().create_puzzle_board_matrix(filename)
+        index = []
+        first_index = []
 
         for word in words:
             for line in puzzle:
                 for letter in line:
                     if letter == word[0]:
-                        print puzzle.index(line)
-                        print line.index(letter)
 
-                        return word[0]
+                        index.append(puzzle.index(line))
+                        index.append(line.index(letter))
+                        first_index = index
+
+                        if WordFinder().search_for_word_descending_vertically(index, word, puzzle) is not None:
+                            found_vert_des = WordFinder().search_for_word_descending_vertically(index, word, puzzle)
+
+                        index = []
 
 
+        return first_index, found_vert_des
 
+    def search_for_word_descending_vertically(self, index, word, puzzle):
+
+        word_coordinates = [index]
+        letter_coordinates = []
+        counter = index[0] + 1
+        i = 1
+
+        while i < len(word) and counter < len(puzzle):
+
+            if word[i] == puzzle[counter][index[1]]:
+                letter_coordinates.append(counter)
+                letter_coordinates.append(index[1])
+                word_coordinates.append(letter_coordinates)
+                counter = counter + 1
+                i = i + 1
+                letter_coordinates = []
+
+            else:
+                break
+
+        if len(word_coordinates) == len(word):
+            #print word, word_coordinates
+            return word_coordinates
 
 
 
