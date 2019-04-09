@@ -88,42 +88,34 @@ class WordFinder:
                         if WordFinder().search_for_word_descending_vertically(index, word, puzzle) is not None:
                             found_vert_des = WordFinder().search_for_word_descending_vertically(index, word, puzzle)
                             word_coordinates[word] = found_vert_des
-                            pass
-
-                        if WordFinder().search_for_word_ascending_vertically(index, word, puzzle) is not None:
+                            
+                        elif WordFinder().search_for_word_ascending_vertically(index, word, puzzle) is not None:
                             found_vert_asc = WordFinder().search_for_word_ascending_vertically(index, word, puzzle)
                             word_coordinates[word] = found_vert_asc
-                            pass
 
-                        if WordFinder().search_for_word_ascending_horizontally(index, word, puzzle) is not None:
+                        elif WordFinder().search_for_word_ascending_horizontally(index, word, puzzle) is not None:
                             found_hrz_asc = WordFinder().search_for_word_ascending_horizontally(index, word, puzzle)
                             word_coordinates[word] = found_hrz_asc
-                            pass
 
-                        if WordFinder().search_for_word_descending_horizontally(index, word, puzzle) is not None:
+                        elif WordFinder().search_for_word_descending_horizontally(index, word, puzzle) is not None:
                             found_hrz_des = WordFinder().search_for_word_descending_horizontally(index, word, puzzle)
                             word_coordinates[word] = found_hrz_des
-                            pass
 
-                        if WordFinder().search_for_word_ascending_diagonally_down(index, word, puzzle) is not None:
+                        elif WordFinder().search_for_word_ascending_diagonally_down(index, word, puzzle) is not None:
                             found_diag_asc_down = WordFinder().search_for_word_ascending_diagonally_down(index, word, puzzle)
                             word_coordinates[word] = found_diag_asc_down
-                            pass
 
-                        if WordFinder().search_for_word_descending_diagonally_up(index, word, puzzle) is not None:
+                        elif WordFinder().search_for_word_descending_diagonally_up(index, word, puzzle) is not None:
                             found_diag_dsc_up = WordFinder().search_for_word_descending_diagonally_up(index, word, puzzle)
                             word_coordinates[word] = found_diag_dsc_up
-                            pass
 
-                        if WordFinder().search_for_word_descending_diagonally_down(index, word, puzzle) is not None:
+                        elif WordFinder().search_for_word_descending_diagonally_down(index, word, puzzle) is not None:
                             found_diag_dsc_down = WordFinder().search_for_word_descending_diagonally_down(index, word, puzzle)
                             word_coordinates[word] = found_diag_dsc_down
-                            pass
 
-                        if WordFinder().search_for_word_ascending_diagonally_up(index, word, puzzle) is not None:
+                        elif WordFinder().search_for_word_ascending_diagonally_up(index, word, puzzle) is not None:
                             found_diag_asc_up = WordFinder().search_for_word_ascending_diagonally_up(index, word, puzzle)
                             word_coordinates[word] = found_diag_asc_up
-                            pass
 
                         index = []
 
