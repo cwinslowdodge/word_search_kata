@@ -67,7 +67,7 @@ class WordFinder:
         Searches puzzle matrix by first letter in word
         for matches along each axis
         :param filename: String .txt filename
-        :return: list word_coordinates
+        :return: dictionary word_coordinates
         '''
 
         words = BuildPuzzle().create_words_list(filename)
@@ -140,7 +140,7 @@ class WordFinder:
         :param index: starting coodinates to begin search
         :param word: current word that is being looked for
         :param puzzle: puzzle matrix to be searched
-        :return: list of word_coordinates
+        :return: list word_coordinates
         '''
 
         word_coordinates = [index]
@@ -170,7 +170,7 @@ class WordFinder:
         :param index: starting coodinates to begin search
         :param word: current word that is being looked for
         :param puzzle: puzzle matrix to be searched
-        :return: list of word_coordinates
+        :return: list word_coordinates
         '''
 
         word_coordinates = [index]
@@ -200,7 +200,7 @@ class WordFinder:
         :param index: starting coodinates to begin search
         :param word: current word that is being looked for
         :param puzzle: puzzle matrix to be searched
-        :return: list of word_coordinates
+        :return: list word_coordinates
         '''
 
         word_coordinates = [index]
@@ -231,7 +231,7 @@ class WordFinder:
         :param index: starting coodinates to begin search
         :param word: current word that is being looked for
         :param puzzle: puzzle matrix to be searched
-        :return: list of word_coordinates
+        :return: list word_coordinates
         '''
 
         word_coordinates = [index]
@@ -262,7 +262,7 @@ class WordFinder:
         :param index: starting coodinates to begin search
         :param word: current word that is being looked for
         :param puzzle: puzzle matrix to be searched
-        :return: list of word_coordinates
+        :return: list word_coordinates
         '''
 
         word_coordinates = [index]
@@ -295,7 +295,7 @@ class WordFinder:
         :param index: starting coodinates to begin search
         :param word: current word that is being looked for
         :param puzzle: puzzle matrix to be searched
-        :return: list of word_coordinates
+        :return: list word_coordinates
         '''
 
         word_coordinates = [index]
@@ -328,7 +328,7 @@ class WordFinder:
         :param index: starting coodinates to begin search
         :param word: current word that is being looked for
         :param puzzle: puzzle matrix to be searched
-        :return: list of word_coordinates
+        :return: list word_coordinates
         '''
 
         word_coordinates = [index]
@@ -361,7 +361,7 @@ class WordFinder:
         :param index: starting coodinates to begin search
         :param word: current word that is being looked for
         :param puzzle: puzzle matrix to be searched
-        :return: list of word_coordinates
+        :return: list word_coordinates
         '''
 
         word_coordinates = [index]
