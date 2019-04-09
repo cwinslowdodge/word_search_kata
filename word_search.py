@@ -1,8 +1,16 @@
 import sys
 
 class BuildPuzzle:
+    '''
+    Class that creates word list and puzzle matrix
+    '''
 
     def populate_puzzle_lines(self, filename):
+        '''
+        Reads text file and strips unnecessary characters
+        :param filename: String .txt filename
+        :return: list list_of_lines
+        '''
 
         lines_of_puzzle = []
         list_of_lines = []
@@ -17,6 +25,12 @@ class BuildPuzzle:
         return list_of_lines
 
     def create_words_list(self, filename):
+        '''
+        Creates list of words to find in puzzle matrix
+        :param filename: String .txt filename
+        :return: list word_list
+        '''
+
         word_list = []
         list_of_lines = BuildPuzzle().populate_puzzle_lines(filename)
 
@@ -26,6 +40,12 @@ class BuildPuzzle:
         return word_list
 
     def create_puzzle_board_matrix(self, filename):
+        '''
+        Creates puzzle matrix to be searched
+        :param filename: String .txt filename
+        :return: list puzzle_board
+        '''
+
         puzzle_board = []
         list_of_lines = BuildPuzzle().populate_puzzle_lines(filename)
 
@@ -36,16 +56,24 @@ class BuildPuzzle:
 
         return puzzle_board
 
+#Represents a word finder class
 class WordFinder:
+    '''
+    Class that searches for words on puzzle matrix
+    '''
 
-    def search_for_first_letter_index(self, filename):
+    def search_for_words_by_first_letter_index(self, filename):
+        '''
+        Searches puzzle matrix by first letter in word
+        for matches along each axis
+        :param filename: String .txt filename
+        :return: list word_coordinates
+        '''
 
         words = BuildPuzzle().create_words_list(filename)
         puzzle = BuildPuzzle().create_puzzle_board_matrix(filename)
         index = []
         word_coordinates = {}
-
-        found_diag_asc_up = []
 
         for word in words:
             for line in puzzle:
@@ -56,7 +84,6 @@ class WordFinder:
 
                         index.append(y_index)
                         index.append(puzzle.index(line))
-
 
                         if WordFinder().search_for_word_descending_vertically(index, word, puzzle) is not None:
                             found_vert_des = WordFinder().search_for_word_descending_vertically(index, word, puzzle)
@@ -107,9 +134,14 @@ class WordFinder:
 
         return word_coordinates
 
-        #return found_vert_des, found_vert_asc, found_hrz_asc, found_hrz_des, found_diag_asc_down, found_diag_dsc_up, found_diag_dsc_down, found_diag_asc_up
-
     def search_for_word_descending_vertically(self, index, word, puzzle):
+        '''
+        Searches for word vertically
+        :param index: starting coodinates to begin search
+        :param word: current word that is being looked for
+        :param puzzle: puzzle matrix to be searched
+        :return: list of word_coordinates
+        '''
 
         word_coordinates = [index]
         letter_coordinates = []
@@ -133,6 +165,13 @@ class WordFinder:
             return word_coordinates
 
     def search_for_word_ascending_vertically(self, index, word, puzzle):
+        '''
+        Searches for word vertically backwards
+        :param index: starting coodinates to begin search
+        :param word: current word that is being looked for
+        :param puzzle: puzzle matrix to be searched
+        :return: list of word_coordinates
+        '''
 
         word_coordinates = [index]
         letter_coordinates = []
@@ -156,6 +195,13 @@ class WordFinder:
             return word_coordinates
 
     def search_for_word_ascending_horizontally(self, index, word, puzzle):
+        '''
+        Searches for word horizontally
+        :param index: starting coodinates to begin search
+        :param word: current word that is being looked for
+        :param puzzle: puzzle matrix to be searched
+        :return: list of word_coordinates
+        '''
 
         word_coordinates = [index]
         letter_coordinates = []
@@ -180,6 +226,13 @@ class WordFinder:
             return word_coordinates
 
     def search_for_word_descending_horizontally(self, index, word, puzzle):
+        '''
+        Searches for word horizontally backwards
+        :param index: starting coodinates to begin search
+        :param word: current word that is being looked for
+        :param puzzle: puzzle matrix to be searched
+        :return: list of word_coordinates
+        '''
 
         word_coordinates = [index]
         letter_coordinates = []
@@ -204,6 +257,13 @@ class WordFinder:
             return word_coordinates
 
     def search_for_word_ascending_diagonally_down(self, index, word, puzzle):
+        '''
+        Searches for word diagonally down and to the right
+        :param index: starting coodinates to begin search
+        :param word: current word that is being looked for
+        :param puzzle: puzzle matrix to be searched
+        :return: list of word_coordinates
+        '''
 
         word_coordinates = [index]
         letter_coordinates = []
@@ -230,6 +290,13 @@ class WordFinder:
             return word_coordinates
 
     def search_for_word_descending_diagonally_up(self, index, word, puzzle):
+        '''
+        Searches for word diagonally up and to the right
+        :param index: starting coodinates to begin search
+        :param word: current word that is being looked for
+        :param puzzle: puzzle matrix to be searched
+        :return: list of word_coordinates
+        '''
 
         word_coordinates = [index]
         letter_coordinates = []
@@ -256,6 +323,13 @@ class WordFinder:
             return word_coordinates
 
     def search_for_word_descending_diagonally_down(self, index, word, puzzle):
+        '''
+        Searches for word diagonally down and to the left
+        :param index: starting coodinates to begin search
+        :param word: current word that is being looked for
+        :param puzzle: puzzle matrix to be searched
+        :return: list of word_coordinates
+        '''
 
         word_coordinates = [index]
         letter_coordinates = []
@@ -282,6 +356,13 @@ class WordFinder:
             return word_coordinates
 
     def search_for_word_ascending_diagonally_up(self, index, word, puzzle):
+        '''
+        Searches for word diagonally up and to the left
+        :param index: starting coodinates to begin search
+        :param word: current word that is being looked for
+        :param puzzle: puzzle matrix to be searched
+        :return: list of word_coordinates
+        '''
 
         word_coordinates = [index]
         letter_coordinates = []
@@ -308,9 +389,9 @@ class WordFinder:
             return word_coordinates
 
 try:
-    WordFinder().search_for_first_letter_index(sys.argv[1])
+    WordFinder().search_for_words_by_first_letter_index(sys.argv[1])
 except IndexError:
-    WordFinder().search_for_first_letter_index('puzzle0.txt')
+    WordFinder().search_for_words_by_first_letter_index('puzzle0.txt')
 
 
 
